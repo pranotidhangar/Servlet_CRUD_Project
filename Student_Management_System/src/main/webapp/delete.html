@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Search</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-image: url(bg.png);
+      }
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 45px;
+      }
+      label {
+        display: block;
+        margin:auto;
+        text-align:center;
+        color: darkmagenta;
+        font-size: 19px;
+      }
+      input {
+        margin-bottom: 12px;
+        padding: 9px;
+        width:95%;
+        border-radius: 8px;
+        border: none;
+        background-color: rgb(236, 234, 234);
+      }
+      .btn {
+        background-color: plum;
+        color: rgb(160, 21, 230);
+        display:block;
+        margin:auto;
+        font-size: 15px;
+        font-weight: bolder;
+        cursor: pointer;
+        border: none;
+        border-radius: 8px;
+        padding: 10px;
+      }
+      .btn:hover {
+        background-color: darkorchid;
+        color: plum;
+      }
+      table {
+      margin-top: 20px;
+      border-collapse: collapse;
+      width: 90%;
+      max-width: 800px;
+      background: #fff;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background: plum;
+      color: #fff;
+      font-weight: bold;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    tr:hover {
+      background: #f0e6f9;
+    }
+    a{
+      text-decoration:none;
+      color: purple;
+      font-size:15px;
+      font-weight:bold;
+      font-family: Playfair Display;
+    }
+    a:hover{
+    	text-decoration:underline;
+    	color:#471c2f;
+    }
+    </style>
+  </head>
+  <body>
+    <div>
+    <form  method="get" id="studentForm">
+      <label for="name">Enter Name to delete student </label>
+      <input type="text" name="name" placeholder="Enter Name" />
+      <button class="btn">Search</button>
+      </form>
+    </div>
+    <div id="table-container"></div>
+
+  <script>
+  document.getElementById('studentForm').addEventListener('submit', function(e) {
+    e.preventDefault(); 
+    const name = document.querySelector('input[name="name"]').value;
+
+    fetch('SearchStudentController?name=' + encodeURIComponent(name))
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('table-container').innerHTML = data;
+      })
+      .catch(error => console.error('Error fetching student data:', error));
+  });
+</script>
+  </body>
+</html>
