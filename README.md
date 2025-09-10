@@ -18,6 +18,7 @@ Technologies Used
 ## Installation
 1. Clone the repository:  
    ```bash
-  https://github.com/pranotidhangar/Servlet_CRUD_Project
+   
+   https://github.com/pranotidhangar/Servlet_CRUD_Project
 
 <img width="1362" height="732" alt="image" src="https://github.com/user-attachments/assets/ac42f3df-3334-4eae-84a1-767cd648c5a0" />
